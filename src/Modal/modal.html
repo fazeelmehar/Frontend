@@ -1,0 +1,29 @@
+<template>
+    <div class="row" style="height: 350px;position: relative;top: 25%;background-color: #f8f9fa !important;">
+        <div class="col-md-8">
+            <div class="modal-body">
+                <ai-dialog>
+                    <ai-dialog-body>
+                        <h2 class="modal-title">${response.ReturnStatus ? "Success":"Error"}</h2>
+                        <br>
+                        <br>
+                        <div bind.if="!response.ReturnStatus">
+                            <ul>
+                                <li repeat.for="e of response.Errors">${e}</li>
+                            </ul>
+                        </div>
+                        <div show.bind="response.ReturnStatus">
+                            <p>Successfully Done</p>
+                        </div>
+                    </ai-dialog-body>
+            </div>
+            </ai-dialog-footer>
+            <div class="modal-footer float-right">
+                <button class="btn btn-primary" click.trigger="controller.cancel()">Cancel</button>
+                <button class="btn btn-secondary" click.trigger="ok(response.ReturnStatus)">Ok</button>
+            </div>
+            </ai-dialog-footer>
+            </ai-dialog>
+        </div>
+    </div>
+</template>

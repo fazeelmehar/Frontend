@@ -1,0 +1,30 @@
+<template>
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Family Name</th>
+            <th scope="col">Email Adress</th>
+            <th scope="col">Hired</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="applicant of responseList.Data">
+            <td>${applicant.Name}</td>
+            <td>${applicant.FamilyName}</td>
+            <td>${applicant.EmailAdress}</td>
+            <td>${applicant.Hired? "Yes":"No"}</td>
+            <td>
+              <a click.trigger='update(applicant.ID)' class="btn btn-sm btn-primary">Update</a>
+              <button click.trigger='delete(applicant.ID)' class="btn btn-sm btn-danger">Delete</button>
+               <a click.trigger='detail(applicant.ID)' class="btn btn-sm btn-secondary">Detail</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
